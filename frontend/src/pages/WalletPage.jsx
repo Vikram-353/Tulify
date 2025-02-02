@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function WalletPage() {
-  return (
-    <div>WalletPage</div>
-  )
+  return <div>WalletPage</div>;
 }
 
-export default WalletPage
+export default WalletPage;

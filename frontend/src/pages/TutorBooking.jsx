@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function TutorBooking() {
-  return (
-    <div>TutorBooking</div>
-  )
+  return <div>TutorBooking</div>;
 }
 
-export default TutorBooking
+export default TutorBooking;

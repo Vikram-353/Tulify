@@ -1,26 +1,32 @@
-import { useState } from 'react'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import About from "./pages/About";
+import PaymentPage from "./pages/PaymentPage";
+import TutorBooking from "./pages/TutorBooking";
+import UserProfile from "./pages/UserProfile";
+import WalletPage from "./pages/WalletPage";
+import Login from "./pages/Login";
+import Navbar from "./Navbar/Navbar";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+    <div>
+      {/* Navbar outside Routes to persist on all pages */}
+      <Navbar />
+      <div className="flex justify-center items-start">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/tutor-booking" element={<TutorBooking />} />
+          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/wallet" element={<WalletPage />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

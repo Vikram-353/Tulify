@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function PaymentSchedule() {
-  return (
-    <div>PaymentSchedule</div>
-  )
+  return <div>PaymentSchedule</div>;
 }
 
-export default PaymentSchedule
+export default PaymentSchedule;
