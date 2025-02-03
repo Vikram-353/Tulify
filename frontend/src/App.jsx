@@ -8,6 +8,7 @@ import UserProfile from "./pages/UserProfile";
 import WalletPage from "./pages/WalletPage";
 import Login from "./pages/Login";
 import Navbar from "./Navbar/Navbar";
+import AllTutors from "./pages/AllTutors";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/tutors" element={<AllTutors />} />
           <Route path="/tutor-booking" element={<TutorBooking />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/wallet" element={<WalletPage />} />
