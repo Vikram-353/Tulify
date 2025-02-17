@@ -9,6 +9,7 @@ import WalletPage from "./pages/WalletPage";
 import Login from "./pages/Login";
 import Navbar from "./Navbar/Navbar";
 import AllTutors from "./pages/AllTutors";
+import ProblemPost from "./components/Posts/ProblemPost";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/tutors" element={<AllTutors />} />
           <Route path="/tutor-booking" element={<TutorBooking />} />
+          <Route path="/post-problem" element={<ProblemPost />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/login" element={<Login />} />
