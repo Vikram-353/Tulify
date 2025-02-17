@@ -101,8 +101,8 @@ function Navbar() {
           <NavLink to="/tutors" className="hover:text-gray-400">
             <li className="cursor-pointer">All Tutors</li>
           </NavLink>
-          <NavLink to="/about" className="hover:text-gray-400">
-            <li className="cursor-pointer">About</li>
+          <NavLink to="/wallet" className="hover:text-gray-400">
+            <li className="cursor-pointer">My Wallet</li>
           </NavLink>
           <NavLink to="/post-problem" className="hover:text-gray-400">
             <li className="cursor-pointer">Post Problem</li>
@@ -121,16 +121,11 @@ function Navbar() {
                 <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
                   <p
                     className="hover:text-black cursor-pointer"
-                    onClick={() => navigate("user-profile")}
+                    onClick={() => navigate("student-profile")}
                   >
                     My Profile
                   </p>
-                  <p
-                    className="hover:text-black cursor-pointer"
-                    onClick={() => navigate("wallet")}
-                  >
-                    My wallet
-                  </p>
+
                   <p
                     className="hover:text-black cursor-pointer"
                     onClick={logout}
