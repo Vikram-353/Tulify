@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ProfilePic from "../assets/problems";
 
 function StudentProfile() {
-  // Sample data for the student
   const studentData = {
     name: "John Doe",
     email: "johndoe@example.com",
@@ -19,9 +18,8 @@ function StudentProfile() {
   };
 
   return (
-    <div className="p-8  ">
+    <div className="p-8">
       <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-        {/* Profile Section */}
         <div className="flex items-center mb-6">
           <img
             src={studentData.profilePic}
@@ -36,7 +34,6 @@ function StudentProfile() {
           </div>
         </div>
 
-        {/* Past Learning Sessions */}
         <div>
           <h3 className="text-xl font-semibold text-gray-700 mb-4">
             Past Learning Sessions

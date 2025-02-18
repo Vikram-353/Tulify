@@ -9,43 +9,6 @@ function Login() {
   // const { setDToken } = useContext(DoctorContext);
   const [state, setState] = useState("Student");
 
-  // const onSubmitHandler = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     if (state === "Admin") {
-  //       const { data } = await axios.post(`${backendUrl}/api/admin/login`, {
-  //         email,
-  //         password,
-  //       });
-  //       if (data.success) {
-  //         localStorage.setItem("atoken", data.token);
-  //         setAtoken(data.token);
-  //         navigate("/admin-dashboard");
-  //       } else {
-  //         toast.error(data.message);
-  //       }
-  //     } else {
-  //       const { data } = await axios.post(`${backendUrl}/api/doctor/login`, {
-  //         email,
-  //         password,
-  //       });
-  //       if (data.success) {
-  //         localStorage.setItem("dtoken", data.token);
-  //         setDToken(data.token);
-  //         // console.log(data.token);
-  //         navigate("/doctor-dashboard");
-  //       } else {
-  //         toast.error(data.message);
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error(
-  //       "Login failed:",
-  //       error.response?.data?.message || error.message
-  //     );
-  //   }
-  // };
-
   return (
     <form className="min-h-[80vh] flex items-center">
       <div className="flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-[#5E5E5E] text-sm shadow-lg">

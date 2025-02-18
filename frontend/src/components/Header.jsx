@@ -1,7 +1,9 @@
 import React from "react";
 import { assets } from "../assets/assests";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <div className="bg-gray-900 text-white py-12 px-6 md:px-16 flex flex-col md:flex-row items-center gap-8 ">
       {/* Left Section: Image */}
@@ -24,7 +26,10 @@ function Header() {
           accusamus minima, neque libero illo deserunt velit, impedit provident.
           Voluptatibus?
         </p>
-        <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg shadow-md">
+        <button
+          onClick={() => navigate("/tutors")}
+          className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg shadow-md"
+        >
           Book Tutor
         </button>
       </div>

@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import Navbar from "./Navbar/Navbar";
 import AllTutors from "./pages/AllTutors";
 import ProblemPost from "./components/Posts/ProblemPost";
+import StudentRegister from "./pages/StudentRegister";
+import TeacherRegister from "./pages/TeacherRegister";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/post-problem" element={<ProblemPost />} />
           <Route path="/student-profile" element={<StudentProfile />} />
           <Route path="/teacher-profile" element={<TeacherProfile />} />
+          <Route path="/teacher-register" element={<TeacherRegister />} />
+          <Route path="/student-register" element={<StudentRegister />} />
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/login" element={<Login />} />
         </Routes>
