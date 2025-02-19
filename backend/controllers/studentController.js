@@ -5,14 +5,13 @@ import studentModel from "../models/studentModel.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-// Add student API
-const addstudent = async (req, res) => {
+dotenv.config();
+
+const addStudent = async (req, res) => {
   try {
     const { name, email, password, qualification, gender, dob } = req.body;
-
     const imageFile = req.file;
 
-    // Validate all fields
     if (
       !name ||
       !email ||
@@ -27,14 +26,10 @@ const addstudent = async (req, res) => {
         .json({ success: false, message: "Please fill all the fields" });
     }
 
-    // Validate Email
     if (!validator.isEmail(email)) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Please enter a valid email" });
+      return res.status(400).json({ success: false, message: "Invalid email" });
     }
 
-    // Validate Password Length
     if (password.length < 8) {
       return res.status(400).json({
         success: false,
@@ -42,7 +37,14 @@ const addstudent = async (req, res) => {
       });
     }
 
-    // Hash Password
+    // Check if email already exists
+    const existingStudent = await studentModel.findOne({ email });
+    if (existingStudent) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Email already exists" });
+    }
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -59,38 +61,18 @@ const addstudent = async (req, res) => {
       qualification,
       gender,
       dob,
-      date: Date.now(),
     };
 
-    const newstudent = new studentModel(studentData);
-    await newstudent.save();
+    const newStudent = new studentModel(studentData);
+    await newStudent.save();
 
-    res.status(200).json({ success: true, message: "student Added" });
+    res
+      .status(201)
+      .json({ success: true, message: "Student added successfully" });
   } catch (error) {
-    console.error(error);
+    console.error("Error adding student:", error);
     res.status(500).json({ success: false, error: error.message });
   }
 };
 
-// const loginstudent = async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-
-//     if (
-//       email === process.env.ADMIN_EMAIL &&
-//       password === process.env.ADMIN_PASSWORD
-//     ) {
-//       const token = jwt.sign(email + password, process.env.JWT_SECRET);
-//       res.json({ success: true, token });
-//     } else {
-//       res.status(400).json({ success: false, message: "Invalid Credentials" });
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ success: false, error: error.message });
-//   }
-// };
-
-//API to get all students list
-
-export { addstudent };
+export { addStudent };

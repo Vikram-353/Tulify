@@ -29,7 +29,7 @@ const studentSchema = new mongoose.Schema({
   },
   dob: {
     type: String,
-    required: "Not Selected",
+    default: "Not Selected",
   },
 });
 
