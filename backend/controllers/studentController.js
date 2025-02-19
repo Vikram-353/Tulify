@@ -65,10 +65,14 @@ const addStudent = async (req, res) => {
 
     const newStudent = new studentModel(studentData);
     await newStudent.save();
+    // Generate JWT Token
+    const stoken = jwt.sign({ id: newStudent._id }, process.env.JWT_SECRET);
+
+    console.log("Generated Token:", stoken); // Debugging
 
     res
       .status(201)
-      .json({ success: true, message: "Student added successfully" });
+      .json({ success: true, message: "Student added successfully", stoken });
   } catch (error) {
     console.error("Error adding student:", error);
     res.status(500).json({ success: false, error: error.message });
