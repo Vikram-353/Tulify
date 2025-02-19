@@ -97,6 +97,7 @@ const allTutor = async (req, res) => {
   try {
     const tutors = await tutorModel.find({}).select("-password");
     res.status(200).json({ success: true, tutors });
+    // console.log(tutors);
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, error: error.message });

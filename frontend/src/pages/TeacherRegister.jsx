@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function TeacherRegister() {
   const [formData, setFormData] = useState({
@@ -6,6 +8,7 @@ function TeacherRegister() {
     name: "",
     email: "",
     qualification: "",
+    field: "",
     fees: "",
     password: "",
   });
@@ -19,13 +22,37 @@ function TeacherRegister() {
     setFormData({ ...formData, profilePic: e.target.files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("image", formData.profilePic);
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("qualification", formData.qualification);
+    formDataToSend.append("field", formData.field);
+    formDataToSend.append("fees", formData.fees);
+    formDataToSend.append("password", formData.password);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/tutor/add-tutor",
+        formDataToSend,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      toast.success("Tutor registered successfully!");
+    } catch (error) {
+      console.error("Error registering tutor:", error.response?.data);
+      toast.error(error.response?.data?.message || "Failed to register tutor.");
+    }
   };
 
   return (
-    <form className="min-h-[80vh] flex items-center">
+    <form onSubmit={handleSubmit} className="min-h-[80vh] flex items-center">
       <div className="flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-[#5E5E5E] text-sm shadow-lg">
         <p className="text-2xl font-semibold m-auto">
           Teacher <span className="text-primary">Registration</span>
@@ -37,6 +64,7 @@ function TeacherRegister() {
             type="file"
             accept="image/*"
             onChange={handleFileChange}
+            required
             className="border border-[#DADADA] rounded w-full p-2 mt-1"
           />
         </div>
@@ -98,11 +126,11 @@ function TeacherRegister() {
           <input
             type="text"
             name="field"
-            value={formData.qualification}
+            value={formData.field}
             onChange={handleChange}
             required
             className="border border-[#DADADA] rounded w-full p-2 mt-1"
-            placeholder="EX:Medical"
+            placeholder="EX: Medical"
           />
         </div>
 
@@ -121,7 +149,6 @@ function TeacherRegister() {
 
         <button
           type="submit"
-          onClick={handleSubmit}
           className="bg-primary text-white w-full py-2 rounded-md text-base mt-4"
         >
           Register

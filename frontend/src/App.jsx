@@ -13,11 +13,14 @@ import AllTutors from "./pages/AllTutors";
 import ProblemPost from "./components/Posts/ProblemPost";
 import StudentRegister from "./pages/StudentRegister";
 import TeacherRegister from "./pages/TeacherRegister";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div>
       {/* Navbar outside Routes to persist on all pages */}
+      <ToastContainer position="top-right" autoClose={3000} />
+
       <Navbar />
       <div className="flex justify-center items-start">
         <Routes>
