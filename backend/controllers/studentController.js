@@ -79,4 +79,34 @@ const addStudent = async (req, res) => {
   }
 };
 
-export { addStudent };
+const loginStudent = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find student by email
+    const student = await studentModel.findOne({ email });
+
+    if (!student) {
+      return res
+        .status(404)
+        .json({ success: false, message: "student does not exist" });
+    }
+
+    // Compare passwords
+    const isMatch = await bcrypt.compare(password, student.password);
+    if (isMatch) {
+      // Generate JWT token
+      const stoken = jwt.sign({ id: student._id }, process.env.JWT_SECRET);
+      res.status(200).json({ success: true, stoken });
+    } else {
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid credentials" });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export { addStudent, loginStudent };

@@ -1,12 +1,15 @@
 import React from "react";
 import { useState, useContext } from "react";
+import StudentContext from "../Context/StudentContext";
+import TeacherContext from "../Context/TeacherContext";
+// import { AppContext } from "../Context/AppContext";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
   // const navigate = useNavigate();
   const [password, setPassword] = useState("");
-  // const { setAtoken, backendUrl } = useContext(AdminContext);
-  // const { setDToken } = useContext(DoctorContext);
+  // const { setStoken, stoken } = useContext(AppContext);
   const [state, setState] = useState("Student");
 
   return (

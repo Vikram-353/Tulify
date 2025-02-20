@@ -27,7 +27,7 @@ const addPost = async (req, res) => {
       subject,
       topic,
       describedQuestion,
-      imageURL,
+      image: imageURL,
       isPosted: true,
     };
 
