@@ -109,4 +109,14 @@ const loginStudent = async (req, res) => {
   }
 };
 
-export { addStudent, loginStudent };
+const allStudent = async (req, res) => {
+  try {
+    const student = await studentModel.find({}).select("-password"); // Exclude passwords
+    res.status(200).json({ success: true, student });
+  } catch (error) {
+    console.error("Error in allTutor:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+export { addStudent, loginStudent, allStudent };

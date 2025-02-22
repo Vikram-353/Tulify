@@ -32,6 +32,10 @@ const tutorSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  role: {
+    type: Number,
+    default: 1,
+  },
 });
 
 const tutorModel =

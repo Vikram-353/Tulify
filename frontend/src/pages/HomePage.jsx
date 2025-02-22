@@ -131,7 +131,7 @@ function HomePage() {
                 )}
                 {problem.isPosted && (
                   <button className="mt-4 w-full bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-500 transition duration-200">
-                    Apply
+                    Respond
                   </button>
                 )}
               </div>

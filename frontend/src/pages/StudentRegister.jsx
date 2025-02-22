@@ -58,6 +58,7 @@ function StudentRegister() {
           gender: "",
           dob: "",
         });
+
         setImage(null);
       }
     } catch (err) {

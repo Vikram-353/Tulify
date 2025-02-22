@@ -31,6 +31,10 @@ const studentSchema = new mongoose.Schema({
     type: String,
     default: "Not Selected",
   },
+  role: {
+    type: Number,
+    default: 1,
+  },
 });
 
 const studentModel =
